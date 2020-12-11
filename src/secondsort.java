@@ -11,7 +11,7 @@ package org.myorg;
 	
 	public class secondsort {
 	
-	   public static class Map extends MapReduceBase implements Mapper<LongWritable, Text, Text, IntWritable> {
+	   public static class Map extends MapReduceBase implements Mapper<LongWritable, Text, Text, FloatWritable> {
 	     private Text word = new Text();
 	
 	     public void map(LongWritable key, Text value, OutputCollector<Text, FloatWritable> output, Reporter reporter) throws IOException {
@@ -23,12 +23,12 @@ package org.myorg;
            String date = _date_time_.substring(1,11);
 	       word.set(date);
            float t = Float.parseFloat(tokenizer.nextToken());
-           output.collect(word,t);
+           output.collect(word,new FloatWritable(t));
 	     }
 	   }
 
-	   public static class Reduce extends MapReduceBase implements Reducer<Text, FloatWritable, Text, FloatWritable> {
-		public void reduce(Text key, Iterator<FloatWritable> values, OutputCollector<Text, FloatWritable> output, Reporter reporter) throws IOException {
+	   public static class Reduce extends MapReduceBase implements Reducer<Text, FloatWritable, Text, Text> {
+		public void reduce(Text key, Iterator<FloatWritable> values, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
 			ArrayList<Float> result = new ArrayList<Float> ();
 		  while (values.hasNext()) {
 			result.add(values.next().get());
