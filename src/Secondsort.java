@@ -35,6 +35,8 @@ package org.myorg;
 		  }
 		  result.sort(Comparator.reverseOrder());
 		  String sorted_tmp_list = result.toString();
+		  sorted_tmp_list = sorted_tmp_list.replace(",","");
+		  sorted_tmp_list = sorted_tmp_list.substring(1,sorted_tmp_list.length()-2);
 		  output.collect(key, new Text(sorted_tmp_list));
 		}
 	  }
@@ -42,20 +44,20 @@ package org.myorg;
 	  public static void main(String[] args) throws Exception {
 		JobConf conf = new JobConf(Secondsort.class);
 		conf.setJobName("secondsort");
-   		System.out.println("line45");
+
 		conf.setOutputKeyClass(Text.class);
 		conf.setOutputValueClass(FloatWritable.class);
-   		System.out.println("line48");
+ 
 		conf.setMapperClass(Map.class);
 		//conf.setCombinerClass(Reduce.class);
 		conf.setReducerClass(Reduce.class);
-   		System.out.println("line52");
+
 		conf.setInputFormat(TextInputFormat.class);
 		conf.setOutputFormat(TextOutputFormat.class);
-   		System.out.println("line55");
+
 		FileInputFormat.setInputPaths(conf, new Path(args[0]));
 		FileOutputFormat.setOutputPath(conf, new Path(args[1]));
-   		System.out.println("line58");
+
 		JobClient.runJob(conf);
 	  }
 
