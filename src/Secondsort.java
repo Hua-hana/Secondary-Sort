@@ -9,7 +9,7 @@ package org.myorg;
 	import org.apache.hadoop.mapred.*;
 	import org.apache.hadoop.util.*;
 	
-	public class secondsort {
+	public class Secondsort {
 	
 	   public static class Map extends MapReduceBase implements Mapper<LongWritable, Text, Text, FloatWritable> {
 	     private Text word = new Text();
@@ -40,22 +40,22 @@ package org.myorg;
 	  }
 
 	  public static void main(String[] args) throws Exception {
-		JobConf conf = new JobConf(secondsort.class);
+		JobConf conf = new JobConf(Secondsort.class);
 		conf.setJobName("secondsort");
-   
+   		System.out.println("line45");
 		conf.setOutputKeyClass(Text.class);
 		conf.setOutputValueClass(Text.class);
-   
+   		System.out.println("line48");
 		conf.setMapperClass(Map.class);
 		//conf.setCombinerClass(Reduce.class);
 		conf.setReducerClass(Reduce.class);
-   
+   		System.out.println("line52");
 		conf.setInputFormat(TextInputFormat.class);
 		conf.setOutputFormat(TextOutputFormat.class);
-   
+   		System.out.println("line55");
 		FileInputFormat.setInputPaths(conf, new Path(args[0]));
 		FileOutputFormat.setOutputPath(conf, new Path(args[1]));
-   
+   		System.out.println("line58");
 		JobClient.runJob(conf);
 	  }
 
