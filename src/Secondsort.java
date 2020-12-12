@@ -44,7 +44,7 @@ package org.myorg;
 		conf.setJobName("secondsort");
    		System.out.println("line45");
 		conf.setOutputKeyClass(Text.class);
-		conf.setOutputValueClass(Text.class);
+		conf.setOutputValueClass(FloatWritable.class);
    		System.out.println("line48");
 		conf.setMapperClass(Map.class);
 		//conf.setCombinerClass(Reduce.class);
