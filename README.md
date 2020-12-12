@@ -19,8 +19,8 @@ result is in output directory
 ## Spark
 ```
 cd src/sparksort
-cd ../..
 sbt package
+cd ../..
 spark-submit --class "Sparksort" src/sparksort/target/scala-2.11/sparksort_2.11-1.0.jar
 ```
 result is in spark-output\
