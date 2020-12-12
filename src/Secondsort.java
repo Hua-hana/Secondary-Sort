@@ -36,7 +36,7 @@ package org.myorg;
 		  result.sort(Comparator.reverseOrder());
 		  String sorted_tmp_list = result.toString();
 		  sorted_tmp_list = sorted_tmp_list.replace(",","");
-		  sorted_tmp_list = sorted_tmp_list.substring(1,sorted_tmp_list.length()-2);
+		  sorted_tmp_list = sorted_tmp_list.substring(1,sorted_tmp_list.length()-1);
 		  output.collect(key, new Text(sorted_tmp_list));
 		}
 	  }
