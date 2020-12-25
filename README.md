@@ -13,6 +13,23 @@ Spark 2.4.7\
 sbt 1.4.4
 
 **all add to environment**
+
+## start cluster
+you first need to create namenode
+```
+hdfs namenode -format
+```
+start hadoop cluster
+```
+ cd $HADOOP_HOME
+ ./sbin/start-all.sh
+```
+start spark cluster
+```
+cd $SPARK_HOME
+./sbin/start-all.sh
+```
+
 ## MapReduce
 generate .jar
 ```
